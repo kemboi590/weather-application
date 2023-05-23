@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=Nairobi';
+      const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=seattle';
 const options = {
 	method: 'GET',
 	headers: {
