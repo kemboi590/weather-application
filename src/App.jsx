@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -58,8 +59,11 @@ function App() {
           <img src={weatherData.current.condition.icon} alt="Weather Icon" />
         </div>
       ) : null}
-    </div>
-  );
-}
+</div>
+);
+};
+
 
 export default App;
+
+
