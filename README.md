@@ -1,7 +1,7 @@
 
 ======================== Team Code Crusaders =====================
 
-# Note: Please do not push to the main branch, create your branch and make a pull request when you commit. 
+### Note: Please do not push to the main branch, create your branch and make a pull request when you commit. 
 
                                 🔥**Authors**🔥
                     --------------------------------------------
