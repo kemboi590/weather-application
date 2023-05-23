@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import './App.css'
+
+
 function App() {
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState(null);
@@ -50,13 +53,19 @@ function App() {
       {loading ? (
         <p>Loading...</p>
       ) : weatherData ? (
-        <div>
+
+        <div id='container'>
           <h2>{weatherData.location.name}</h2>
+         
+          <img src={weatherData.current.condition.icon} alt="Weather Icon" />
+
           <p>Temperature: {weatherData.current.temp_c}°C</p>
           <p>Condition: {weatherData.current.condition.text}</p>
           <p>Cloud: {weatherData.current.cloud}</p>
           <p>Wind speed: {weatherData.current.wind_kph}</p>
-          <img src={weatherData.current.condition.icon} alt="Weather Icon" />
+
+          
+
         </div>
       ) : null}
 </div>
