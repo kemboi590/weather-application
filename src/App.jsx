@@ -1,50 +1,65 @@
-import { useState, useEffect} from 'react'
-
-import './App.css'
+import { useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [location, setlocation] = useState('');
+  const [location, setLocation] = useState('');
+  const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=${location}';
-      const options = {
-	      method: 'GET',
-	      headers: {
-		      'X-RapidAPI-Key': 'c91f9666e1msha2a78962a9ff863p1255ffjsnc55172833efb',
-		      'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-      
+  const fetchWeatherData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`,
+        {
+          headers: {
+            'X-RapidAPI-Key': 'c91f9666e1msha2a78962a9ff863p1255ffjsnc55172833efb',
+          },
+        }
+      );
+      setWeatherData(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+      setLoading(false);
     }
-    fetchData()
-        
-  },[location])
+  };
 
-  const handleSearch = (e) => {
-    setlocation(e.target.value);
-    e.preventDefault();
-  }
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchWeatherData();
+  };
 
   return (
-    <div>
-      <h1>Welcome To Weather Application</h1>
-      <form action="handleSearch">
-        <input type="text" placeholder='Enter Location' value={location} onChange={handleSearch} />
-        <button type='submit'>Get Weather</button>
+    <div className="App">
+      <h1>Weather App</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter location"
+          value={location}
+          onChange={handleLocationChange}
+        />
+        <button type="submit">Get Weather</button>
       </form>
+      {loading ? (
+        <p>Loading...</p>
+      ) : weatherData ? (
+        <div>
+          <h2>{weatherData.location.name}</h2>
+          <p>Temperature: {weatherData.current.temp_c}°C</p>
+          <p>Condition: {weatherData.current.condition.text}</p>
+          <p>Cloud: {weatherData.current.cloud}</p>
+          <p>Wind speed: {weatherData.current.wind_kph}</p>
+          <img src={weatherData.current.condition.icon} alt="Weather Icon" />
+        </div>
+      ) : null}
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
