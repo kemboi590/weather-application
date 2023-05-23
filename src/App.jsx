@@ -1,14 +1,15 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect, useRef} from 'react'
 
 import './App.css'
 
 function App() {
-  const [location, setlocation] = useState('');
+  const [areaPlace, setAreaPlace] = useState('');
+  const nameRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
 
-      const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=${location}';
+      const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${areaPlace}`;
       const options = {
 	      method: 'GET',
 	      headers: {
@@ -29,21 +30,22 @@ try {
     }
     fetchData()
         
-  },[location])
+  },[areaPlace])
 
-  const handleSearch = (e) => {
-    setlocation(e.target.value);
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    setAreaPlace(nameRef.current.value);
+   console.log(areaPlace)
+ 
   }
 
 
   return (
     <div>
       <h1>Welcome To Weather Application</h1>
-      <form action="handleSearch">
-        <input type="text" placeholder='Enter Location' value={location} onChange={handleSearch} />
-        <button type='submit'>Get Weather</button>
-      </form>
+    
+        <input type="text" placeholder='Enter Location'  ref={nameRef} />
+        <button  onClick={handleSubmit}>Get Weather</button>
+     
     </div>
 
   )
