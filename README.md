@@ -17,3 +17,8 @@
         * Build a weather app that fetches data from a weather app and displays the current weather condition for a given location  
 
 
+### View of the Website
+
+![Weather App](/src/assets/weatherAppScreenShot.PNG)
+
+
