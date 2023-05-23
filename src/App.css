@@ -1,0 +1,22 @@
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#container img{
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    
+}
+#container{
+    border: 1px solid black;
+    width: 300px;
+    margin-top: 20px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+    
+}
