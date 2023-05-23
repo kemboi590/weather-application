@@ -57,6 +57,7 @@ body{
     height: 30px;
     border: 1px solid black;
     border-radius: 5px;
+    margin-right: 10px;
 }
 .buttonElem:hover {
     background-color: #636FA4;

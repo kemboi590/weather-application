@@ -36,6 +36,10 @@ function App() {
     event.preventDefault();
     fetchWeatherData();
   };
+  const handleClear = () => { 
+    setLocation('');
+    setWeatherData(null);
+}
 
   return (
     <div className="App">
@@ -49,6 +53,7 @@ function App() {
           className='InputField'
         />
         <button type="submit" className='buttonElem'>Get Weather</button>
+        <button className='buttonElem' onClick={handleClear}>Clear</button>
       </form>
       {loading ? (
         <p>Loading...</p>
