@@ -1,4 +1,5 @@
 
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .App{
     display: flex;
     flex-direction: column;
@@ -22,9 +23,24 @@
     
 
 }
+.HeaderName{
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+}
 body{
     background: #E8CBC0;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #636FA4, #E8CBC0);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #636FA4, #E8CBC0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+
+.InputField{
+    margin-top: 20px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline: none;
+    padding-left: 10px;
+    margin-right: 10px;
 }

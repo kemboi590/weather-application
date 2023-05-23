@@ -40,15 +40,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <h1 className='HeaderName'>Weather App</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Enter location"
           value={location}
           onChange={handleLocationChange}
+          className='InputField'
         />
-        <button type="submit">Get Weather</button>
+        <button type="submit" className='buttonElem'>Get Weather</button>
       </form>
       {loading ? (
         <p>Loading...</p>
@@ -62,7 +63,6 @@ function App() {
           <p>Cloud: {weatherData.current.cloud}</p>
           <p>Wind speed: {weatherData.current.wind_kph} Kph</p>
 
-          
 
         </div>
       ) : null}
