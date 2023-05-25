@@ -3,12 +3,13 @@ import axios from 'axios';
 
 import './App.css'
 
-
 function App() {
+  // State variables
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // Function to fetch weather data from the API
   const fetchWeatherData = async () => {
     try {
       setLoading(true);
@@ -28,18 +29,22 @@ function App() {
     }
   };
 
+  // Event handler for location input change
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
   };
 
+  // Event handler for form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchWeatherData();
   };
+
+  // Event handler for clearing location and weather data
   const handleClear = () => { 
     setLocation('');
     setWeatherData(null);
-}
+  }
 
   return (
     <div className="App">
@@ -58,7 +63,6 @@ function App() {
       {loading ? (
         <p>Loading...</p>
       ) : weatherData ? (
-
         <div id='container'>
           <h2>{weatherData.location.name}</h2>
           <img src={weatherData.current.condition.icon} alt="Weather Icon" />
@@ -66,12 +70,10 @@ function App() {
           <p>Condition: {weatherData.current.condition.text}</p>
           <p>Cloud: {weatherData.current.cloud}</p>
           <p>Wind speed: {weatherData.current.wind_kph} Kph</p>
-
-
         </div>
       ) : null}
-</div>
-);
+    </div>
+  );
 }
 
 export default App;
