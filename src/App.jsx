@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-
 import './App.css'
 
 function App() {
@@ -9,16 +8,20 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const Key = import.meta.env.VITE_API_KEY
+  const api_url= import.meta.env.VITE_API_URL
   // Function to fetch weather data from the API
   const fetchWeatherData = async () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`,
+        api_url,
         {
           headers: {
-            'X-RapidAPI-Key': 'c91f9666e1msha2a78962a9ff863p1255ffjsnc55172833efb',
+            'X-RapidAPI-Key':Key, 
+            
           },
+          
         }
       );
       setWeatherData(response.data);
@@ -74,6 +77,7 @@ function App() {
       ) : null}
     </div>
   );
+
 }
 
 export default App;
