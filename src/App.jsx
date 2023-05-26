@@ -9,13 +9,13 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const Key = import.meta.env.VITE_API_KEY
-  const api_url= import.meta.env.VITE_API_URL
+  //const api_url= import.meta.env.VITE_API_URL
   // Function to fetch weather data from the API
   const fetchWeatherData = async () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        api_url,
+        `https://weatherapi-com.p.rapidapi.com/current.json?q=${location}`,
         {
           headers: {
             'X-RapidAPI-Key':Key, 
